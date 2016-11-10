@@ -1,0 +1,32 @@
+{% load staticfiles %}
+
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/sales.css' %}">
+    <title> The Personal Agent - Sales</title>
+</head>
+
+
+<div>
+    <h1><a href="/">The Personal Agent</a></h1>
+</div>
+
+<table>
+    <tr>
+        <th>Team Member</th>
+        <th>Address</th>
+        <th>Date Listed</th>
+        <th>Price</th>
+        <th>Comm Rate</th>
+    </tr>
+    {% for Listing in sales %}
+        <tr>
+            <th>{{ Listing.team_member }}</th>
+            <th>{{ Listing.address }}</th>
+            <th>{{ Listing.date_listed }}</th>
+            <th>{{ Listing.list_price }}</th>
+            <th>{{ Listing.commission_rate }}</th>
+        </tr>
+    {% endfor %}
+</table>
