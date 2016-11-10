@@ -1,8 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Team, Listing, Site
+from .models import Listing
 
-admin.site.register(Team)
-admin.site.register(Site)
 admin.site.register(Listing)
