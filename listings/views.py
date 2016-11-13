@@ -19,8 +19,10 @@ def fallen_through(request):
 
 
 def listing_new(request):
+    form_class = ListingForm
+    form = form_class(request.POST or None)
     if request.method == "POST":
-        form = ListingForm(request.POST)
+
         if form.is_valid():
             listing = form.save(commit=False)
             listing.team_member = request.team_member
