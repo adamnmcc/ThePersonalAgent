@@ -34,7 +34,7 @@ def listing_new(request):
             listing.date_listed = datetime.datetime.now()
 
             listing.save()
-            return redirect('sales')
+            # return redirect('sales')
         else:
             form = ListingFormForm()
     return render(request, 'listings/listing_new.html', {'form': form})
