@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Listing
 from .forms import ListingForm
+import datetime
 
 
 def index(request):
@@ -25,14 +26,15 @@ def listing_new(request):
 
         if form.is_valid():
             listing = form.save(commit=False)
-            listing.team_member = request.team_member
-            listing.address = request.address
-            listing.list_price = request.list_price
-            listing.commission_rate = request.commission_rate
-            listing.commission_value = request.commission_value
+            listing.team_member = form.cleaned_data['team_member']
+            listing.address = form.cleaned_data['address']
+            listing.list_price = form.cleaned_data['list_price']
+            listing.commission_rate = form.cleaned_data['commission_rate']
+            listing.commission_value = form.cleaned_data['commission_value']
+            listing.date_listed = datetime.datetime.now()
 
             listing.save()
-            # return redirect('sales')
+            return redirect('sales')
         else:
             form = ListingFormForm()
     return render(request, 'listings/listing_new.html', {'form': form})
